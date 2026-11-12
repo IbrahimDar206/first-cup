@@ -649,19 +649,56 @@ html {
     }
 }
 
+/* Hamburger Menu - Desktop Default */
+
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: #5c3825;
+    cursor: pointer;
+}
+
+
 /* Mobile Phones */
+
 @media (max-width: 768px) {
 
     .navbar {
-        flex-direction: column;
-        gap: 20px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
         padding: 20px;
     }
 
+    /* Show Hamburger Button on Mobile */
+
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Hide Navigation Links Initially */
+
     .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px 0;
+        background-color: #f5eee6;
+        z-index: 1000;
+    }
+
+    /* Show Menu When Active */
+
+    .nav-links.active {
+        display: flex;
     }
 
     .hero,
@@ -703,4 +740,5 @@ html {
         flex-wrap: wrap;
         gap: 15px;
     }
+
 }
