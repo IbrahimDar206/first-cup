@@ -679,27 +679,35 @@ html {
         display: block;
     }
 
-    /* Hide Navigation Links Initially */
+    /* Mobile Navigation Menu */
 
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        padding: 20px 0;
-        background-color: #f5eee6;
-        z-index: 1000;
-    }
+.nav-links {
+    display: flex;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+    background-color: #f5eee6;
+    z-index: 1000;
 
-    /* Show Menu When Active */
+    /* Animation */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-15px);
+    transition: all 0.4s ease;
+}
 
-    .nav-links.active {
-        display: flex;
-    }
+/* Show Menu with Animation */
+
+.nav-links.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
 
     .hero,
     .about {
