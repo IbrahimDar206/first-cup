@@ -21,3 +21,15 @@ if (menuToggle && navLinks) {
     });
 
 }
+
+// Close Mobile Menu When a Link is Clicked
+
+const navItems = document.querySelectorAll(".nav-links a");
+
+navItems.forEach(function(link) {
+
+    link.addEventListener("click", function() {
+        navLinks.classList.remove("active");
+    });
+
+});
