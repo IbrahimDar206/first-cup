@@ -16,9 +16,13 @@ const navLinks = document.querySelector(".nav-links");
 
 if (menuToggle && navLinks) {
 
-    menuToggle.addEventListener("click", function() {
-        navLinks.classList.toggle("active");
-    });
+   menuToggle.addEventListener("click", function() {
+
+    navLinks.classList.toggle("active");
+
+    menuToggle.classList.toggle("open");
+
+});
 
 }
 
@@ -30,6 +34,8 @@ navItems.forEach(function(link) {
 
     link.addEventListener("click", function() {
         navLinks.classList.remove("active");
+        menuToggle.classList.remove("open");
     });
 
 });
+
