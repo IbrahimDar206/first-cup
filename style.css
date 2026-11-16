@@ -649,15 +649,43 @@ html {
     }
 }
 
-/* Hamburger Menu - Desktop Default */
+/* Hamburger Button */
 
 .menu-toggle {
     display: none;
-    font-size: 28px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 35px;
+    height: 35px;
     background: none;
     border: none;
-    color: #5c3825;
     cursor: pointer;
+}
+
+/* Hamburger Lines */
+
+.menu-toggle span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background-color: #5c3825;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Hamburger to X Animation */
+
+.menu-toggle.open span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
 }
 
 
