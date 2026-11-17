@@ -777,4 +777,175 @@ html {
         gap: 15px;
     }
 
+
+}
+
+
+/* Shopping Cart */
+
+.cart-container {
+    max-width: 600px;
+    margin: 50px auto 0;
+    padding: 30px;
+    background-color: #fffaf5;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.cart-container h2 {
+    color: #5c3825;
+    margin-bottom: 20px;
+}
+
+#cart-items {
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.cart-container h3 {
+    color: #5c3825;
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+}
+
+/* Add to Cart Button */
+
+.add-to-cart {
+    background-color: #5c3825;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.add-to-cart:hover {
+    background-color: #8b5e3c;
+}
+
+
+/* Cart Item Styling */
+
+#cart-items p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    margin-bottom: 10px;
+    background-color: #f5eee6;
+    border-radius: 6px;
+    color: #5c3825;
+}
+
+/* Remove Button */
+
+#cart-items button {
+    background-color: #a94442;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#cart-items button:hover {
+    background-color: #7d2927;
+}
+
+/* Navbar Cart Icon */
+
+.cart-icon {
+    position: relative;
+    font-size: 22px;
+    cursor: pointer;
+    color: #5c3825;
+    margin: 0 15px;
+}
+
+/* Cart Count Badge */
+
+#cart-count {
+    position: absolute;
+    top: -10px;
+    right: -12px;
+    background-color: #a94442;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    width: 19px;
+    height: 19px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Cart Icon Hover Effect */
+
+.cart-icon {
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.cart-icon:hover {
+    transform: scale(1.15);
+}
+
+/* Cart Count Hover Effect */
+
+#cart-count {
+    transition: background-color 0.3s ease;
+}
+
+.cart-icon:hover #cart-count {
+    background-color: #5c3825;
+}
+
+/* Quantity Buttons */
+
+#cart-items button {
+    min-width: 32px;
+    padding: 7px 12px;
+    margin: 0 4px;
+    background-color: #5c3825;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s ease;
+}
+
+/* Quantity Button Hover */
+
+#cart-items button:hover {
+    background-color: #8b5e3c;
+    transform: scale(1.1);
+}
+
+/* WhatsApp Checkout Button */
+
+#checkout-btn {
+    width: 100%;
+    padding: 14px;
+    margin-top: 15px;
+    background-color: #25D366;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+/* Checkout Button Hover */
+
+#checkout-btn:hover {
+    background-color: #1da851;
+    transform: translateY(-3px);
 }
