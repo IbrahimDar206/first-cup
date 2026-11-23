@@ -994,3 +994,176 @@ html {
     height: 100px;
     resize: vertical;
 }
+
+/* Order Success Message */
+
+.order-success {
+    margin-top: 15px;
+    padding: 12px;
+    color: #2e7d32;
+    background-color: #e8f5e9;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
+    display: none;
+}
+
+/* Clear Cart Button Styling */
+
+.clear-cart-btn {
+    background-color: #8b2e2e;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+.clear-cart-btn:hover {
+    background-color: #5e1b1b;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+}
+
+.clear-cart-btn:active {
+    transform: scale(0.96);
+}
+
+/* Premium Shopping Cart Design */
+
+.cart-container {
+    max-width: 650px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fffaf3;
+    border: 1px solid #ead8c0;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(80, 45, 20, 0.12);
+}
+
+.cart-container h2 {
+    color: #4b2e1f;
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+#cart-items {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #eee0d0;
+}
+
+.cart-container h3 {
+    color: #5c3825;
+    margin-top: 20px;
+}
+
+.cart-container h3 span {
+    color: #8b4513;
+    font-weight: bold;
+}
+
+/* Customer Details Styling */
+
+.customer-details {
+    margin-top: 25px;
+    padding: 20px;
+    background-color: #f5ede3;
+    border-radius: 10px;
+}
+
+.customer-details h3 {
+    margin-top: 0;
+    margin-bottom: 18px;
+}
+
+.customer-details input,
+.customer-details textarea {
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 15px;
+    border: 1px solid #d6c2ad;
+    border-radius: 7px;
+    font-size: 15px;
+    outline: none;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+
+.customer-details input:focus,
+.customer-details textarea:focus {
+    border-color: #8b4513;
+    box-shadow: 0 0 5px rgba(139, 69, 19, 0.2);
+}
+
+.customer-details textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Premium WhatsApp Checkout Button */
+
+#checkout-btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 15px;
+    background-color: #6f4e37;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#checkout-btn:hover {
+    background-color: #4b2e1f;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(75, 46, 31, 0.25);
+}
+
+#checkout-btn:active {
+    transform: scale(0.98);
+}
+
+/* Shopping Cart Mobile Responsive */
+
+@media (max-width: 768px) {
+
+    .cart-container {
+        width: auto;
+        margin: 25px 15px;
+        padding: 20px 15px;
+    }
+
+    .cart-container h2 {
+        font-size: 23px;
+    }
+
+    #cart-items {
+        padding: 15px;
+    }
+
+    .customer-details {
+        padding: 15px;
+    }
+
+    .customer-details input,
+    .customer-details textarea {
+        font-size: 14px;
+    }
+
+    #checkout-btn,
+    .clear-cart-btn {
+        width: 100%;
+        margin-top: 12px;
+    }
+}

@@ -232,7 +232,6 @@ function updateCart() {
 
 }
 
-
 // Clear Cart Functionality
 
 const clearCartButton = document.querySelector("#clear-cart");
@@ -241,9 +240,21 @@ if (clearCartButton) {
 
     clearCartButton.addEventListener("click", function() {
 
-        cart = [];
+        // Confirmation Popup
 
-        updateCart();
+        const confirmClear = confirm(
+            "Are you sure you want to clear your cart? 🛒"
+        );
+
+        if (confirmClear) {
+
+            cart = [];
+
+            updateCart();
+
+            alert("Your cart has been cleared successfully! ☕");
+
+        }
 
     });
 
@@ -346,10 +357,22 @@ if (checkoutButton) {
             encodeURIComponent(message);
 
 
-        // Open WhatsApp
+        // Show Order Success Message
 
-        window.open(whatsappURL, "_blank");
+const orderSuccess = document.querySelector("#order-success");
 
-    });
+if (orderSuccess) {
+    orderSuccess.textContent =
+        "Your order details are ready! Please send the WhatsApp message to complete your order. ☕";
+
+    orderSuccess.style.display = "block";
+}
+
+
+// Open WhatsApp
+
+window.open(whatsappURL, "_blank");
+
+});
 
 }
