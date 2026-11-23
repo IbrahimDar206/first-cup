@@ -279,6 +279,15 @@ if (checkoutButton) {
         const customerName = document.querySelector("#customer-name").value.trim();
 
         const customerPhone = document.querySelector("#customer-phone").value.trim();
+        
+         // Validate Pakistani Mobile Number
+
+    const phonePattern = /^03[0-9]{9}$/;
+
+    if (!phonePattern.test(customerPhone)) {
+        alert("Please enter a valid 11-digit mobile number (e.g. 03201234567).");
+        return;
+    }
 
         const customerAddress = document.querySelector("#customer-address").value.trim();
 

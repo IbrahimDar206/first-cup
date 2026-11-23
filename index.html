@@ -208,10 +208,15 @@
         >
 
         <input
-            type="tel"
-            id="customer-phone"
-            placeholder="Enter your phone number"
-        >
+    type="tel"
+    id="customer-phone"
+    placeholder="03XXXXXXXXX"
+    maxlength="11"
+    minlength="11"
+    pattern="03[0-9]{9}"
+    inputmode="numeric"
+    required
+>
 
         <textarea
             id="customer-address"
