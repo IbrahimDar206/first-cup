@@ -181,23 +181,58 @@
 
     </div>
 
-    <!-- Shopping Cart -->
+   <!-- Shopping Cart -->
 
-    <div class="cart-container">
+<div class="cart-container">
 
-        <h2>🛒 Your Cart</h2>
+    <h2>🛒 Your Cart</h2>
 
-        <div id="cart-items">
-            Your cart is empty.
-        </div>
+    <div id="cart-items">
+        Your cart is empty.
+    </div>
 
-        <h3>
-            Total: Rs. <span id="cart-total">0</span>
-        </h3>
-        <button id="clear-cart">
+    <h3>
+        Total: Rs. <span id="cart-total">0</span>
+    </h3>
+
+    <!-- Customer Details Form -->
+
+    <div class="customer-details">
+
+        <h3>Customer Details</h3>
+
+        <input
+            type="text"
+            id="customer-name"
+            placeholder="Enter your name"
+        >
+
+        <input
+            type="tel"
+            id="customer-phone"
+            placeholder="Enter your phone number"
+        >
+
+        <textarea
+            id="customer-address"
+            placeholder="Enter your delivery address"
+        ></textarea>
+
+    </div>
+
+    <!-- Clear Cart Button -->
+
+    <button id="clear-cart">
         Clear Cart
-        </button>
-        <!-- WhatsApp Checkout Button -->
+    </button>
+
+    <!-- WhatsApp Checkout Button -->
+
+    <button id="checkout-btn">
+        Order on WhatsApp ☕
+    </button>
+
+</div>
 
 <button id="checkout-btn">
     Order on WhatsApp ☕

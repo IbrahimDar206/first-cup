@@ -41,9 +41,13 @@ navItems.forEach(function(link) {
 
     link.addEventListener("click", function() {
 
-        navLinks.classList.remove("active");
+        if (navLinks && menuToggle) {
 
-        menuToggle.classList.remove("open");
+            navLinks.classList.remove("active");
+
+            menuToggle.classList.remove("open");
+
+        }
 
     });
 
@@ -65,6 +69,8 @@ const cartTotal = document.querySelector("#cart-total");
 const cartCount = document.querySelector("#cart-count");
 
 
+// Add Products to Cart
+
 addToCartButtons.forEach(function(button) {
 
     button.addEventListener("click", function() {
@@ -73,6 +79,7 @@ addToCartButtons.forEach(function(button) {
 
         const price = Number(button.dataset.price);
 
+
         // Check if Product Already Exists
 
         const existingProduct = cart.find(function(item) {
@@ -80,6 +87,7 @@ addToCartButtons.forEach(function(button) {
             return item.name === name;
 
         });
+
 
         if (existingProduct) {
 
@@ -114,7 +122,14 @@ function updateCart() {
 
     // Save Cart Data in Browser Storage
 
-localStorage.setItem("firstCupCart", JSON.stringify(cart));
+    localStorage.setItem("firstCupCart", JSON.stringify(cart));
+
+    if (!cartItems || !cartTotal || !cartCount) {
+
+        return;
+
+    }
+
     cartItems.innerHTML = "";
 
     let total = 0;
@@ -149,47 +164,47 @@ localStorage.setItem("firstCupCart", JSON.stringify(cart));
             " - Rs. " + (item.price * item.quantity) + " ";
 
 
-       // Quantity Decrease Button
+        // Quantity Decrease Button
 
-const decreaseButton = document.createElement("button");
+        const decreaseButton = document.createElement("button");
 
-decreaseButton.textContent = "-";
+        decreaseButton.textContent = "-";
 
-decreaseButton.addEventListener("click", function() {
+        decreaseButton.addEventListener("click", function() {
 
-    item.quantity--;
+            item.quantity--;
 
-    if (item.quantity === 0) {
+            if (item.quantity === 0) {
 
-        cart.splice(index, 1);
+                cart.splice(index, 1);
 
-    }
+            }
 
-    updateCart();
+            updateCart();
 
-});
-
-
-// Quantity Increase Button
-
-const increaseButton = document.createElement("button");
-
-increaseButton.textContent = "+";
-
-increaseButton.addEventListener("click", function() {
-
-    item.quantity++;
-
-    updateCart();
-
-});
+        });
 
 
-// Add Quantity Buttons
+        // Quantity Increase Button
 
-itemElement.appendChild(decreaseButton);
+        const increaseButton = document.createElement("button");
 
-itemElement.appendChild(increaseButton);
+        increaseButton.textContent = "+";
+
+        increaseButton.addEventListener("click", function() {
+
+            item.quantity++;
+
+            updateCart();
+
+        });
+
+
+        // Add Quantity Buttons
+
+        itemElement.appendChild(decreaseButton);
+
+        itemElement.appendChild(increaseButton);
 
         cartItems.appendChild(itemElement);
 
@@ -233,6 +248,8 @@ if (clearCartButton) {
     });
 
 }
+
+
 // Display Saved Cart When Page Loads
 
 updateCart();
@@ -242,53 +259,97 @@ updateCart();
 
 const checkoutButton = document.querySelector("#checkout-btn");
 
-checkoutButton.addEventListener("click", function() {
+if (checkoutButton) {
 
-    // Check Empty Cart
+    checkoutButton.addEventListener("click", function() {
 
-    if (cart.length === 0) {
+        // Get Customer Details
 
-        alert("Your cart is empty! Please add some coffee first. ☕");
+        const customerName = document.querySelector("#customer-name").value.trim();
 
-        return;
+        const customerPhone = document.querySelector("#customer-phone").value.trim();
 
-    }
+        const customerAddress = document.querySelector("#customer-address").value.trim();
 
-    // Create WhatsApp Message
 
-    let message = "Hello First Cup! ☕\n\n";
+        // Check Empty Cart
 
-    message += "I want to place an order:\n\n";
+        if (cart.length === 0) {
 
-    cart.forEach(function(item) {
+            alert("Your cart is empty! Please add some coffee first. ☕");
 
-        message += item.name +
-                   " x " + item.quantity +
-                   " = Rs. " +
-                   (item.price * item.quantity) + "\n";
+            return;
+
+        }
+
+
+        // Check Customer Details
+
+        if (customerName === "" || customerPhone === "" || customerAddress === "") {
+
+            alert("Please fill in all customer details!");
+
+            return;
+
+        }
+
+
+        // Create WhatsApp Message
+
+        let message = "☕ First Cup Order\n\n";
+
+        message += "Customer Details:\n";
+
+        message += "Name: " + customerName + "\n";
+
+        message += "Phone: " + customerPhone + "\n";
+
+        message += "Address: " + customerAddress + "\n\n";
+
+        message += "Order Details:\n";
+
+
+        // Add Coffee Items
+
+        cart.forEach(function(item) {
+
+            message += item.name +
+                       " x " + item.quantity +
+                       " = Rs. " +
+                       (item.price * item.quantity) + "\n";
+
+        });
+
+
+        // Calculate Total Bill
+
+        let total = 0;
+
+        cart.forEach(function(item) {
+
+            total += item.price * item.quantity;
+
+        });
+
+
+        // Add Total to Message
+
+        message += "\nTotal Bill: Rs. " + total;
+
+        message += "\n\nThank you for choosing First Cup! ☕";
+
+
+        // Create WhatsApp URL
+
+        const whatsappURL =
+            "https://wa.me/923205265677?text=" +
+            encodeURIComponent(message);
+
+
+        // Open WhatsApp
+
+        window.open(whatsappURL, "_blank");
 
     });
 
-    // Calculate Total
-
-    let total = 0;
-
-    cart.forEach(function(item) {
-
-        total += item.price * item.quantity;
-
-    });
-
-    message += "\nTotal Bill: Rs. " + total;
-
-    message += "\n\nThank you!";
-
-    // Open WhatsApp
-
-    const whatsappURL =
-        "https://wa.me/923205265677?text=" +
-        encodeURIComponent(message);
-
-    window.open(whatsappURL, "_blank");
-
-});
+}

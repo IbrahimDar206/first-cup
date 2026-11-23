@@ -949,3 +949,48 @@ html {
     background-color: #1da851;
     transform: translateY(-3px);
 }
+
+/* Customer Details Form */
+
+.customer-details {
+    margin-top: 25px;
+    padding: 20px;
+    background-color: #f5eee6;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.customer-details h3 {
+    color: #5c3825;
+    margin-bottom: 15px;
+}
+
+/* Input Fields */
+
+.customer-details input,
+.customer-details textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #d6c3b2;
+    border-radius: 6px;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+    outline: none;
+    box-sizing: border-box;
+}
+
+/* Focus Effect */
+
+.customer-details input:focus,
+.customer-details textarea:focus {
+    border-color: #8b5e3c;
+    box-shadow: 0 0 5px rgba(92, 56, 37, 0.2);
+}
+
+/* Address Box */
+
+.customer-details textarea {
+    height: 100px;
+    resize: vertical;
+}
