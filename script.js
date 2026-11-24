@@ -385,3 +385,33 @@ window.open(whatsappURL, "_blank");
 });
 
 }
+
+// Register Service Worker
+
+if ("serviceWorker" in navigator) {
+
+    window.addEventListener("load", function() {
+
+        navigator.serviceWorker.register("./service-worker.js")
+
+            .then(function(registration) {
+
+                console.log(
+                    "Service Worker registered successfully!",
+                    registration
+                );
+
+            })
+
+            .catch(function(error) {
+
+                console.log(
+                    "Service Worker registration failed:",
+                    error
+                );
+
+            });
+
+    });
+
+}
