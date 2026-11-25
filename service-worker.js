@@ -1,4 +1,4 @@
-const CACHE_NAME = "first-cup-v4";
+const CACHE_NAME = "first-cup-v5";
 
 const FILES_TO_CACHE = [
     "./",
@@ -58,17 +58,47 @@ self.addEventListener("activate", function(event) {
 
 });
 
-// Fetch Cached Files
+// Fetch Fresh Files First, Cache as Backup
 
 self.addEventListener("fetch", function(event) {
 
+    if (event.request.method !== "GET") {
+        return;
+    }
+
+    const requestURL = new URL(event.request.url);
+
+    if (requestURL.origin !== self.location.origin) {
+        return;
+    }
+
     event.respondWith(
 
-        caches.match(event.request).then(function(response) {
+        fetch(event.request)
 
-            return response || fetch(event.request);
+            .then(function(response) {
 
-        })
+                if (response.ok) {
+
+                    const responseCopy = response.clone();
+
+                    caches.open(CACHE_NAME).then(function(cache) {
+
+                        cache.put(event.request, responseCopy);
+
+                    });
+
+                }
+
+                return response;
+
+            })
+
+            .catch(function() {
+
+                return caches.match(event.request);
+
+            })
 
     );
 
