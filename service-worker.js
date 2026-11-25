@@ -1,4 +1,4 @@
-const CACHE_NAME = "first-cup-v3";
+const CACHE_NAME = "first-cup-v4";
 
 const FILES_TO_CACHE = [
     "./",
