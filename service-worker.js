@@ -1,4 +1,4 @@
-const CACHE_NAME = "first-cup-v2";
+const CACHE_NAME = "first-cup-v3";
 
 const FILES_TO_CACHE = [
     "./",
@@ -13,6 +13,8 @@ const FILES_TO_CACHE = [
 // Install Service Worker
 
 self.addEventListener("install", function(event) {
+
+    self.skipWaiting();
 
     event.waitUntil(
 
@@ -29,6 +31,8 @@ self.addEventListener("install", function(event) {
 // Activate Service Worker
 
 self.addEventListener("activate", function(event) {
+
+    self.clients.claim();
 
     event.waitUntil(
 
