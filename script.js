@@ -396,12 +396,41 @@ if ("serviceWorker" in navigator) {
 
             .then(function(registration) {
 
-                console.log(
-                    "Service Worker registered successfully!",
-                    registration
+    console.log(
+        "Service Worker registered successfully!",
+        registration
+    );
+
+    // Detect New Version
+
+    let hadController = Boolean(
+        navigator.serviceWorker.controller
+    );
+
+    navigator.serviceWorker.addEventListener(
+        "controllerchange",
+        function() {
+
+            if (hadController) {
+
+                let updateNow = confirm(
+                    "A new version of First Cup is available! Would you like to refresh the app?"
                 );
 
-            })
+                if (updateNow) {
+
+                    window.location.reload();
+
+                }
+
+            }
+
+            hadController = true;
+
+        }
+    );
+
+})
 
             .catch(function(error) {
 
@@ -415,3 +444,7 @@ if ("serviceWorker" in navigator) {
     });
 
 }
+
+// Register Service Worker
+
+if ("serviceWorker" in navigator) {
