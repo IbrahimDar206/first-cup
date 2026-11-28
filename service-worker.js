@@ -1,10 +1,11 @@
-const CACHE_NAME = "first-cup-v5";
+const CACHE_NAME = "first-cup-v6";
 
 const FILES_TO_CACHE = [
     "./",
     "./index.html",
     "./style.css",
     "./script.js",
+    "./config.js",
     "./manifest.json",
     "./icon-192.png",
     "./icon-512.png"
