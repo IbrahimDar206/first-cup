@@ -1,3 +1,10 @@
+// Dynamic Cafe Name
+
+const cafeNameElement = document.querySelector("#cafe-name");
+
+if (cafeNameElement) {
+    cafeNameElement.textContent = window.SITE_CONFIG.cafeName + " ☕";
+}
 
 // First Cup Button Interaction
 
@@ -54,6 +61,53 @@ navItems.forEach(function(link) {
     });
 
 });
+
+
+// Dynamic Menu System
+
+const menuContainer = document.querySelector("#menu-container");
+
+if (menuContainer && window.SITE_CONFIG.menuItems) {
+
+    menuContainer.innerHTML = "";
+
+    window.SITE_CONFIG.menuItems.forEach(function(item) {
+
+        const menuCard = document.createElement("div");
+        menuCard.className = "menu-card";
+
+        const image = document.createElement("img");
+        image.src = item.image;
+        image.alt = item.name;
+
+        const heading = document.createElement("h3");
+        heading.textContent = item.name;
+
+        const description = document.createElement("p");
+        description.textContent = item.description;
+
+        const price = document.createElement("h4");
+        price.textContent =
+            window.SITE_CONFIG.currency + " " + item.price;
+
+        const button = document.createElement("button");
+        button.className = "add-to-cart";
+        button.dataset.name = item.name;
+        button.dataset.price = item.price;
+        button.textContent = "Add to Cart";
+
+        menuCard.appendChild(image);
+        menuCard.appendChild(heading);
+        menuCard.appendChild(description);
+        menuCard.appendChild(price);
+        menuCard.appendChild(button);
+
+        menuContainer.appendChild(menuCard);
+
+    });
+
+}
+
 
 
 // Shopping Cart Functionality
@@ -163,7 +217,7 @@ function updateCart() {
 
         itemElement.textContent =
             item.name + " × " + item.quantity +
-            " - Rs. " + (item.price * item.quantity) + " ";
+            " - " + window.SITE_CONFIG.currency + " " + (item.price * item.quantity) + " ";
 
 
         // Quantity Decrease Button
@@ -318,7 +372,7 @@ if (checkoutButton) {
 
         // Create WhatsApp Message
 
-        let message = "☕ First Cup Order\n\n";
+        let message = "☕ " + window.SITE_CONFIG.cafeName + " Order\n\n";
 
         message += "Customer Details:\n";
 
@@ -337,7 +391,7 @@ if (checkoutButton) {
 
             message += item.name +
                        " x " + item.quantity +
-                       " = Rs. " +
+                      " = " + window.SITE_CONFIG.currency + " " +
                        (item.price * item.quantity) + "\n";
 
         });
@@ -356,7 +410,7 @@ if (checkoutButton) {
 
         // Add Total to Message
 
-        message += "\nTotal Bill: Rs. " + total;
+        message += "\nTotal Bill: " + window.SITE_CONFIG.currency + " " + total;
 
         message += "\n\nThank you for choosing First Cup! ☕";
 
@@ -364,8 +418,8 @@ if (checkoutButton) {
         // Create WhatsApp URL
 
         const whatsappURL =
-            "https://wa.me/923205265677?text=" +
-            encodeURIComponent(message);
+    "https://wa.me/" + window.SITE_CONFIG.whatsappNumber +
+    "?text=" + encodeURIComponent(message);
 
 
         // Show Order Success Message
